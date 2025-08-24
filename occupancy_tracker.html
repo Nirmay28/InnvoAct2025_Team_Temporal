@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Occupancy Tracker</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f6f7fb;
+      color: #000;
+    }
+
+    /* Top Navbar */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 24px;
+      background: linear-gradient(90deg, #003366, #2d7acb);
+      color: #fff;
+      font-weight: bold;
+    }
+    header .left { display: flex; align-items: center; gap: 10px; }
+    header .logo { width: 80px; height: 24px; background: #fff3; display: flex; align-items: center; justify-content: center; font-size: 12px; border-radius: 4px; }
+    header .right { font-size: 14px; }
+
+    /* Main Container */
+    .container { max-width: 1200px; margin: 30px auto; padding: 0 20px; }
+    h1 { font-size: 28px; margin-bottom: 10px; }
+    .search {
+      width: 100%; max-width: 600px; padding: 10px;
+      font-size: 16px; border: 1px solid #ccc; border-radius: 6px;
+      margin-bottom: 30px;
+    }
+
+    /* Recently Visited Card */
+    .card {
+      background: #dfe9fb;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .card-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px;
+    }
+    .card-header h2 { margin: 0; font-size: 22px; font-weight: bold; }
+    .view-all { font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 5px; }
+
+    /* Gauge Layout */
+    .gauges {
+      display: flex; justify-content: space-around; flex-wrap: wrap; gap: 20px;
+    }
+    .gauge {
+      width: 180px; height: 180px; position: relative;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center;
+    }
+    svg { transform: rotate(-90deg); width: 180px; height: 180px; }
+    circle {
+      fill: none; stroke-width: 12; 
+      cx: 90; cy: 90; r: 80;
+    }
+    .bg { stroke: #59b163; }  /* green background */
+    .progress { stroke: #e53935; stroke-linecap: round; }
+
+    /* Gauge Text */
+    .gauge-content {
+      position: absolute;
+      top: 50%; left: 50%; transform: translate(-50%, -50%);
+    }
+    .place { font-size: 13px; font-weight: bold; }
+    .percent { font-size: 28px; font-weight: bold; }
+    .label { font-size: 12px; letter-spacing: 1px; }
+    .fraction { font-size: 13px; margin-top: 4px; }
+
+    /* Info Button */
+    .info-btn {
+      margin-top: 10px; 
+      border: 1px solid #2d7acb; background: none; color: #2d7acb;
+      padding: 6px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="left">
+      <div class="logo">Logo</div>
+      VIT (Vellore Campus)
+    </div>
+    <div class="right">25BMVD068 (STUDENT)</div>
+  </header>
+
+  <div class="container">
+    <h1>Occupancy Tracker</h1>
+    <input type="text" class="search" placeholder="Where do you want to go?" />
+
+    <div class="card">
+      <div class="card-header">
+        <h2>Recently Visited</h2>
+        <div class="view-all">→ View all</div>
+      </div>
+      <div class="gauges">
+        
+        <!-- Gauge 1 -->
+        <div class="gauge">
+          <svg>
+            <circle class="bg" r="80" cx="90" cy="90"/>
+            <circle class="progress" r="80" cx="90" cy="90"
+              stroke-dasharray="125.6 502.4" /> <!-- 25% occupied -->
+          </svg>
+          <div class="gauge-content">
+            <div class="place">Periyar Library</div>
+            <div class="percent">25%</div>
+            <div class="label">OCCUPIED</div>
+            <div class="fraction"><b>60</b>/240</div>
+          </div>
+          <button class="info-btn">View more Information</button>
+        </div>
+
+        <!-- Gauge 2 -->
+        <div class="gauge">
+          <svg>
+            <circle class="bg" r="80" cx="90" cy="90"/>
+            <circle class="progress" r="80" cx="90" cy="90"
+              stroke-dasharray="427 502.4" /> <!-- 85% occupied -->
+          </svg>
+          <div class="gauge-content">
+            <div class="place">Outdoor Gym</div>
+            <div class="percent">85%</div>
+            <div class="label">OCCUPIED</div>
+            <div class="fraction"><b>85</b>/100</div>
+          </div>
+          <button class="info-btn">View more Information</button>
+        </div>
+
+        <!-- Gauge 3 -->
+        <div class="gauge">
+          <svg>
+            <circle class="bg" r="80" cx="90" cy="90"/>
+            <circle class="progress" r="80" cx="90" cy="90"
+              stroke-dasharray="286.4 502.4" /> <!-- 57% occupied -->
+          </svg>
+          <div class="gauge-content">
+            <div class="place">Chillout Plaza Gym</div>
+            <div class="percent">57%</div>
+            <div class="label">OCCUPIED</div>
+            <div class="fraction"><b>80</b>/140</div>
+          </div>
+          <button class="info-btn">View more Information</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
